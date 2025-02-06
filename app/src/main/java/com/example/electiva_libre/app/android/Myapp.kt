@@ -1,4 +1,4 @@
-package com.example.electiva_libre
+package com.example.electiva_libre.app.android
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

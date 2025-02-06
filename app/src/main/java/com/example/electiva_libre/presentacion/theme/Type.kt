@@ -1,4 +1,4 @@
-package com.example.electiva_libre.ui.theme
+package com.example.electiva_libre.presentacion.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

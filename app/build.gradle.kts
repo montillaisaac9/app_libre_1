@@ -104,6 +104,13 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0") // Core
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0") // Android
 
+    // Lottie
+    implementation (libs.lottie.compose)
+    //ROOM
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
 
 
