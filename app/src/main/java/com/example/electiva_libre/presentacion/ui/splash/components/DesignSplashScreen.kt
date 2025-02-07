@@ -1,4 +1,5 @@
 
+import android.content.res.Configuration
 import androidx.compose.ui.draw.scale
 import android.util.Base64
 import androidx.compose.foundation.Image
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.electiva_libre.R
+import com.example.electiva_libre.presentacion.theme.Electiva_LibreTheme
 
 
 fun decodeBase64ToImageBitmap(base64Str: String?): ImageBitmap? {
@@ -66,8 +68,13 @@ fun DesignSplashScreen(
     }
 
 
-@Preview(showSystemUi = true)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showSystemUi = true
+)
 @Composable
 fun PreviewSplashScreen() {
-    DesignSplashScreen()
+    Electiva_LibreTheme {
+        DesignSplashScreen()
+    }
 }

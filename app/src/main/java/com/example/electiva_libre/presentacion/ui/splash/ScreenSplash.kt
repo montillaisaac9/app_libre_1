@@ -1,9 +1,9 @@
-package com.example.electiva_libre.presentacion.ui.Splash
+package com.example.electiva_libre.presentacion.ui.splash
 
 import DesignSplashScreen
 
 
-import com.example.electiva_libre.presentacion.ui.Splash.components.AnimationSplashContent
+import com.example.electiva_libre.presentacion.ui.splash.components.AnimationSplashContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.runtime.Composable

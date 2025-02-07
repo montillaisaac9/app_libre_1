@@ -5,8 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.electiva_libre.presentacion.ui.Login.ScreenLogin
-import com.example.electiva_libre.presentacion.ui.Splash.ScreenSplash
+import com.example.electiva_libre.presentacion.ui.home.ScreenHome
+import com.example.electiva_libre.presentacion.ui.login.ScreenLogin
+import com.example.electiva_libre.presentacion.ui.register.ScreenRegister
+import com.example.electiva_libre.presentacion.ui.splash.ScreenSplash
 
 @Composable
 fun Navigation() {
@@ -19,9 +21,13 @@ fun Navigation() {
         }
        composable(Screen.LoginScreen.route){
             ScreenLogin(navController)
-        }/*        composable(Screen.HomeScreen.route) {
+        }
+        composable(Screen.HomeScreen.route) {
             ScreenHome(navController)
-        }*/
+        }
+        composable(Screen.RegisterScreen.route) {
+            ScreenRegister(navController)
+        }
 
 
     }

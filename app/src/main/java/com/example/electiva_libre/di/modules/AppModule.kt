@@ -2,6 +2,7 @@ package com.example.electiva_libre.di.modules
 
 
 import com.example.electiva_libre.data.repository.UserRepositoryImp
+import com.example.electiva_libre.domain.UserUC
 import com.example.electiva_libre.domain.repository.UserRepostory
 
 import dagger.Provides
@@ -14,5 +15,8 @@ object AppModule {
 
     @Provides
     fun provideUserRepository(impl: UserRepositoryImp): UserRepostory = impl
+
+    @Provides
+    fun provideUserUseCase(repositoryImpl: UserRepositoryImp) = UserUC(repositoryImpl)
 
 }

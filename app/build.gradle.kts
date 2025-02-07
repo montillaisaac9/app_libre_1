@@ -112,7 +112,8 @@ dependencies {
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
-
+    //Icons
+    implementation(libs.icons)
 
 
 }

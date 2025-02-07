@@ -1,4 +1,4 @@
-package com.example.electiva_libre.presentacion.ui.Splash.components
+package com.example.electiva_libre.presentacion.ui.splash.components
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable

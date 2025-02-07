@@ -1,4 +1,4 @@
-package com.example.electiva_libre.presentacion.ui.Splash
+package com.example.electiva_libre.presentacion.ui.splash
 
 
 
@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.electiva_libre.data.db.entity.UserEntity
-import com.example.electiva_libre.domain.GetLocalUserUC
+import com.example.electiva_libre.domain.UserUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel@Inject constructor(
-    private val useCase: GetLocalUserUC,
+    private val useCase: UserUC,
     private val defaultDispatcher: CoroutineDispatcher
 ): ViewModel()  {
 
@@ -24,7 +24,7 @@ class SplashViewModel@Inject constructor(
         private set
 
     fun getUserDb() = viewModelScope.launch {
-        useCase().collect{
+        useCase.getLocalUser().collect{
             responseDataBase = it
         }
     }
