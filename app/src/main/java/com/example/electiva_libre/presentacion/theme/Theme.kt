@@ -1,12 +1,9 @@
 package com.example.electiva_libre.presentacion.theme
 
 import android.os.Build
-import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -15,28 +12,29 @@ import androidx.compose.ui.platform.LocalContext
 private val DarkColorScheme = darkColorScheme(
     primary = primaryColorDark,
     background = bgDark,
-    onPrimary= White,
-    secondary = Orange,
+    onPrimary= Black,
+    secondary = secundaryDark,
     tertiary = Blue,
     onBackground = White,
     onSecondaryContainer= BlackCard,
-    secondaryContainer = OrangeDark,
+    secondaryContainer = secundaryDark,
     surfaceContainerHigh = BackgroundSearchDark,
-    onTertiary = Blue,
-    onTertiaryContainer = White
+    onTertiary = White,
+    onTertiaryContainer = White,
+    tertiaryContainer = GrayLight
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = primaryColor,
     background = bgLight,
-    onPrimary= Black,
-    secondary = Blue,
+    onPrimary= White,
+    secondary = secundary,
     onSecondaryContainer= White,
     secondaryContainer = Gray,
-    tertiary = Orange,
+    tertiary = secundary,
     onBackground= Black,
     surfaceContainerHigh = BackgroundSearch,
-    onTertiary = BlueDark,
+    onTertiary = Black,
     onTertiaryContainer = BlueDark
 
 

@@ -1,4 +1,4 @@
-package com.example.electiva_libre.presentacion.ui.home
+package com.example.electiva_libre.presentacion.ui.perfil
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -10,16 +10,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.electiva_libre.R
+import com.example.electiva_libre.presentacion.common.botomBar.CustomBottomBar
 
 @Composable
-fun ScreenHome(navController: NavHostController) {
-    Scaffold { paddingValues ->
+fun ScreenPerfil(navController: NavHostController) {
+    Scaffold (
+        bottomBar = {
+            CustomBottomBar(navController)
+        }
+    ) { paddingValues ->
         Column(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
         ) {
-            Row (modifier = Modifier.fillMaxWidth()){
+            Row (
+
+                modifier = Modifier.fillMaxWidth()
+            ){
                 Icon(
                     painter = painterResource(id = R.drawable.ais),
                     tint = MaterialTheme.colorScheme.primary,

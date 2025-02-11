@@ -7,8 +7,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.electiva_libre.R
+import com.example.electiva_libre.data.network.models.params.ParamsLogin
+import com.example.electiva_libre.data.network.models.params.ParamsRegister
+import com.example.electiva_libre.data.network.models.responses.ResponseLogin
+import com.example.electiva_libre.data.network.models.responses.User
 import com.example.electiva_libre.domain.UserUC
 import com.example.electiva_libre.presentacion.ui.register.components.StateRegister
+import com.example.electiva_libre.utils.ApiResult
+import com.example.electiva_libre.utils.isOnline
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -22,6 +28,8 @@ class RegisterVIewModel @Inject constructor(
 
     var state by mutableStateOf(StateRegister())
         private set
+
+    var registerResponse by mutableStateOf<ApiResult<User>?>(null)
 
 
     fun validate() {
@@ -88,8 +96,16 @@ class RegisterVIewModel @Inject constructor(
     }
 
 
-    private fun register() = viewModelScope.launch { 
-        
+    private fun register()  = viewModelScope.launch {
+        if (isOnline(context)) useCase.register(params = ParamsRegister(
+            username = state.username,
+            email = state.email,
+            firstName = state.name,
+            lastName = state.lastname,
+            password = state.password
+        )
+        ).collect{
+            registerResponse = it
+        } else registerResponse= ApiResult.Error(context.getString(R.string.Failed))
     }
-
 }

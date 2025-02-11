@@ -9,6 +9,7 @@ import com.example.electiva_libre.data.db.entity.UserEntity
 import com.example.electiva_libre.data.network.client.ApiServiceImpl
 import com.example.electiva_libre.data.network.models.params.ParamsLogin
 import com.example.electiva_libre.data.network.models.params.ParamsRegister
+import com.example.electiva_libre.data.network.models.responses.RegisterErrorResponse
 import com.example.electiva_libre.data.network.models.responses.ResponseLogin
 import com.example.electiva_libre.data.network.models.responses.User
 import com.example.electiva_libre.domain.repository.UserRepostory
@@ -33,13 +34,13 @@ class UserRepositoryImp @Inject constructor(
 
     override suspend fun login(params: ParamsLogin): Flow<ApiResult<ResponseLogin>?> =
         apiService.post<ResponseLogin>(
-            url = "/api/auth/login",
+            url = "api/auth/login",
             bodyJson = Json.encodeToJsonElement(params),
         )
 
     override suspend fun register(params: ParamsRegister): Flow<ApiResult<User>?> =
-        apiService.post<User>(
-            url = "/api/auth/register",
+        apiService.postCustom<User, RegisterErrorResponse>(
+            url = "api/auth/register",
             bodyJson = Json.encodeToJsonElement(params),
         )
 

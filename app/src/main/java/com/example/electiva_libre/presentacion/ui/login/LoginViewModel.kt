@@ -13,6 +13,7 @@ import com.example.electiva_libre.data.network.models.responses.ResponseLogin
 import com.example.electiva_libre.domain.UserUC
 import com.example.electiva_libre.presentacion.ui.login.components.StateLogin
 import com.example.electiva_libre.utils.ApiResult
+import com.example.electiva_libre.utils.isOnline
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -55,12 +56,12 @@ class LoginViewModel @Inject constructor(
     }
 
     fun login() = viewModelScope.launch {
-         useCase.login(params = ParamsLogin(
+        if (isOnline(context)) useCase.login(params = ParamsLogin(
             username = state.username,
             password = state.password
         )).collect{
              logginResponse = it
-         }
+         } else logginResponse= ApiResult.Error(context.getString(R.string.Failed))
     }
 
     fun inserUser(user: UserEntity) = viewModelScope.launch {

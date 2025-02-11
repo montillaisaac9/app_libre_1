@@ -95,4 +95,6 @@
     <string name="password">Contraseña</string>
     <string name="confirm_password">Confirmar Contraseña</string>
     <string name="register">Registrarse</string>
+    <string name="not_acount">No se encontró ninguna cuenta activa con las credenciales proporcionadas</string>
+    <string name="exist">Ya existe un usuario con ese nombre de usuario.</string>
 </resources>

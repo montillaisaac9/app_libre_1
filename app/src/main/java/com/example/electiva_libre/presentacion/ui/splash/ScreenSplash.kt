@@ -31,7 +31,7 @@ fun ScreenSplash(navController: NavController = rememberNavController(), viewMod
             durationMillisAnimation = 1000,
             delayScreen = 100L
         ){
-            navController.navigate(route = Screen.HomeScreen.route) {
+            navController.navigate(route = Screen.NewsScreen.route) {
                 popUpTo(route = Screen.SplashScreen.route) {
                     inclusive = true
                 }
