@@ -1,5 +1,6 @@
 package com.example.electiva_libre.presentacion.common.botomBar
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Approval
 import androidx.compose.material.icons.outlined.Code
@@ -8,6 +9,7 @@ import androidx.compose.material.icons.outlined.PersonOutline
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -43,6 +45,7 @@ fun CustomBottomBar(navController: NavHostController) {
     )
 
     NavigationBar(
+        modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.background
     ) {
         items.forEach { item ->

@@ -1,10 +1,12 @@
 package com.example.electiva_libre.domain
 
+import com.example.electiva_libre.data.network.models.params.ParamTestimonialAdd
 import com.example.electiva_libre.data.network.models.params.ParamsLogin
 import com.example.electiva_libre.data.network.models.responses.ResponseListCourses
 import com.example.electiva_libre.data.network.models.responses.ResponseListNews
 import com.example.electiva_libre.data.network.models.responses.ResponseListTestimonials
 import com.example.electiva_libre.data.network.models.responses.ResponseLogin
+import com.example.electiva_libre.data.network.models.responses.Testimonial
 import com.example.electiva_libre.data.repository.DataRespositoryImp
 import com.example.electiva_libre.utils.ApiResult
 import kotlinx.coroutines.flow.Flow
@@ -19,6 +21,7 @@ class DataUC  @Inject constructor(private val userRepo: DataRespositoryImp) {
 
     suspend fun getTestimonials(): Flow<ApiResult<ResponseListTestimonials>?> = userRepo.getTestimonials()
 
+    suspend fun postTestimonials(params: ParamTestimonialAdd): Flow<ApiResult<Testimonial>?> = userRepo.postTestimonials(params)
 
 
 }

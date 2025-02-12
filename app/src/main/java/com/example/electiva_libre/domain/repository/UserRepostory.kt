@@ -15,6 +15,8 @@ interface UserRepostory {
 
     fun getUser(): Flow<UserEntity>
 
+    suspend fun deteleUser()
+
     suspend fun login(params: ParamsLogin): Flow<ApiResult<ResponseLogin>?>
 
     suspend fun register(params: ParamsRegister): Flow<ApiResult<User>?>

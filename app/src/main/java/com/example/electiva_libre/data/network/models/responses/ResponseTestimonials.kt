@@ -11,13 +11,18 @@ data class ResponseListTestimonials(
     val data: List<Testimonial>
 )
 
-
-
 @Serializable
 data class Testimonial(
-    @SerialName("id") val id: Int,
     @SerialName("content") val content: String,
     @SerialName("created_at") val createdAt: String,
     @SerialName("is_approved") val isApproved: Boolean,
-    @SerialName("author") val author: Int
+    @SerialName("author_detail") val author: Author
+)
+
+@Serializable
+data class Author(
+    @SerialName("id") val id: Int,
+    @SerialName("username") val username: String,
+    @SerialName("first_name") val firstName: String,
+    @SerialName("last_name") val lastName: String
 )

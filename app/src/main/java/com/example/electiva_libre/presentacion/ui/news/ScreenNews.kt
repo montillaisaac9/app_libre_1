@@ -37,6 +37,10 @@ fun ScreenNews(
     val scope = rememberCoroutineScope()
     val response = viewModel.newsResponse
 
+    LaunchedEffect(Unit) {
+        viewModel.getNews()
+    }
+
     Scaffold (
         bottomBar = {
             CustomBottomBar(navController)
@@ -73,7 +77,7 @@ fun ScreenNews(
 
                     val list = response.data?.data?: emptyList()
                     if (list.size == 0){
-                        Column (modifier = Modifier.padding(10.dp)){
+                        Column (modifier = Modifier.padding(10.dp).fillMaxSize()){
                         Text("La Lista esta vacia...", fontSize = 30.sp, color = MaterialTheme.colorScheme.onBackground)
                         }
                     }else {

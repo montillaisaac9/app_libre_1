@@ -40,6 +40,7 @@ android {
             )
             resValue("string", "app_name", "Electiva_Libre")
             buildConfigField("String", "HOST_BASE", "${rootProject.ext.properties["HOST_BASE"]}")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 

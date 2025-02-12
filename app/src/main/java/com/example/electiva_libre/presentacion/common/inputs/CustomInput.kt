@@ -46,6 +46,7 @@ fun CustomInput(
     imeAction: ImeAction = ImeAction.Done,
     borderColor: Color? = null,
     readOnly: Boolean = false,
+    maxLines: Int = 1,
     textAlign: TextAlign = TextAlign.Unspecified,
     onImeAction: (() -> Unit)? = null,
     onStateChange: (String) -> Unit = {},
@@ -64,6 +65,7 @@ fun CustomInput(
         ),
         readOnly = readOnly,
         singleLine = true,
+        maxLines = maxLines,
         label = {
             Text(
                 text = label,

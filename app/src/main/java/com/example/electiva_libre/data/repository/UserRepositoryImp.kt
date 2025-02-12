@@ -30,7 +30,7 @@ class UserRepositoryImp @Inject constructor(
 
     override fun getUser(): Flow<UserEntity> = userDao.getUserFlow()
 
-
+    override suspend fun deteleUser() = userDao.deleteUser()
 
     override suspend fun login(params: ParamsLogin): Flow<ApiResult<ResponseLogin>?> =
         apiService.post<ResponseLogin>(

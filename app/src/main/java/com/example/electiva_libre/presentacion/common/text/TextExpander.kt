@@ -42,7 +42,7 @@ fun TextExpander(
         maxLines = textMaxLines,
         fontWeight = fontWeight,
         style = MaterialTheme.typography.bodySmall,
-        text = "Contenido: $text"
+        text = text
     )
 
 }

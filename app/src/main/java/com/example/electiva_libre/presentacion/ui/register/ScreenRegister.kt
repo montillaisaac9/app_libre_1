@@ -39,7 +39,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.electiva_libre.R
 import com.example.electiva_libre.data.network.models.responses.toEntity
 import com.example.electiva_libre.presentacion.common.CustomProgressBar
@@ -106,7 +108,14 @@ fun ScreenRegister(
                     .padding(horizontal = 10.dp)
                     .fillMaxWidth()
             ) {
-                // Campo: Username
+                Text(
+                    text = "Registro",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontSize = 30.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(20.dp).fillMaxWidth()
+                )
+
                 CustomInput(
                     state = stateRegister.username,
                     label = stringResource(R.string.username),

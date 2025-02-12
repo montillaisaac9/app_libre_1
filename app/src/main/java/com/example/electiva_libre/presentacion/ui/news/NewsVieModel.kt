@@ -29,9 +29,6 @@ class NewsVieModel @Inject constructor(
     var newsResponse by mutableStateOf<ApiResult<ResponseListNews>?>(null)
         private set
 
-    init {
-        getNews()
-    }
 
     fun getNews() = viewModelScope.launch {
         if (isOnline(context)) dataCase.getNews().collect{

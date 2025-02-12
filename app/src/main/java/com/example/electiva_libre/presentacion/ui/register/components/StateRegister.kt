@@ -1,16 +1,16 @@
 package com.example.electiva_libre.presentacion.ui.register.components
 
 data class StateRegister(
-    var username : String = "julio3",
+    var username : String = "",
     var errMsgUsername : String = "",
-    var password : String = "123456782",
+    var password : String = "",
     var errMsgPassword : String = "",
-    var email: String = "julio@gmail.com",
+    var email: String = "",
     var errMsgEmail: String = "",
-    var name: String = "julio",
+    var name: String = "",
     var errMsgName: String = "",
-    var lastname: String = "pollas",
+    var lastname: String = "",
     var errMsgLastname: String = "",
-    var password2 : String = "123456782",
+    var password2 : String = "",
     var errMsgPassword2 : String = "",
 )

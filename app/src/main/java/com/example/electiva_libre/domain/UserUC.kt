@@ -16,6 +16,8 @@ class UserUC @Inject constructor(private val userRepo: UserRepositoryImp) {
 
     fun getLocalUser(): Flow<UserEntity> = userRepo.getUser()
 
+    suspend fun deleteUserLocale() = userRepo.deteleUser()
+
     suspend fun login(params: ParamsLogin): Flow<ApiResult<ResponseLogin>?> = userRepo.login(params)
 
     suspend fun register(params: ParamsRegister): Flow<ApiResult<User>?> = userRepo.register(params)

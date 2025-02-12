@@ -36,8 +36,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.electiva_libre.R
 import com.example.electiva_libre.data.network.models.responses.toEntity
@@ -47,11 +50,12 @@ import com.example.electiva_libre.presentacion.common.inputs.CustomInput
 import com.example.electiva_libre.presentacion.common.snackbar.CustomSnackbar
 import com.example.electiva_libre.presentacion.navegation.Screen
 import com.example.electiva_libre.utils.ApiResult
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
 fun ScreenLogin(
-    navController: NavHostController,
+    navController: NavController,
     viewModel: LoginViewModel = hiltViewModel()
 ) {
 
@@ -63,6 +67,7 @@ fun ScreenLogin(
     val scope = rememberCoroutineScope()
 
     Scaffold (
+        modifier = Modifier.fillMaxSize(),
         snackbarHost = {
             SnackbarHost(
                 hostState = snackBarState
@@ -102,6 +107,13 @@ fun ScreenLogin(
                     .padding(horizontal = 10.dp)
                     .fillMaxWidth()
             ) {
+                Text(
+                    text = "Inicio de Sesion",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontSize = 30.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(20.dp).fillMaxWidth()
+                )
                 CustomInput(
                     state = stateLogin.username,
                     label = stringResource(R.string.username),
@@ -151,33 +163,35 @@ fun ScreenLogin(
                 )
             }
         }
-
-        when (response){
-            is ApiResult.Error -> {
-                viewModel.logginResponse = null
-                if (response.error == "No active account found with the given credentials")
-                LaunchedEffect(Unit) {
-                    scope.launch { snackBarState.showSnackbar(message = context.getString(R.string.not_acount)) }
-                }
-                else  LaunchedEffect(Unit) {
-                    scope.launch { snackBarState.showSnackbar(message = response.error.orEmpty()) }
-                }
-            }
-            is ApiResult.Loading -> CustomProgressBar()
+    }
+    LaunchedEffect(key1 = response) {
+        when (response) {
             is ApiResult.Success -> {
                 val user = response.data?.user?.toEntity()
                 if (user != null) {
                     viewModel.inserUser(user = user)
-                    navController.navigate(Screen.NewsScreen.route){
-                        popUpTo(route = Screen.LoginScreen.route) {
-                            inclusive = true
-                        }
+                    navController.navigate(Screen.SplashScreen.route) {
+                        popUpTo(route = Screen.LoginScreen.route) { inclusive = true }
                         launchSingleTop = true
                     }
                 }
             }
-            null -> {}
+            is ApiResult.Error -> {
+                // Reiniciar el estado para evitar múltiples efectos
+                viewModel.logginResponse = null
+                val mensaje = if (response.error == "No active account found with the given credentials")
+                    context.getString(R.string.not_acount)
+                else
+                    response.error.orEmpty()
+
+                // Mostrar el Snackbar
+                snackBarState.showSnackbar(message = mensaje)
+            }
+            is ApiResult.Loading -> {
+                // Puedes mostrar un indicador de carga o una pantalla de progreso si lo deseas
+            }
+            null -> { /* No hacer nada */ }
         }
+    }
 
     }
-}
